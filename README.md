@@ -7,7 +7,7 @@ To achieve this, we first classify stages of the rowing stroke and then identify
 The algorithms behind this work combines pose detection with a classifier.
 
 The pose detection algorithms were modified from two existing repos:
-1. Original Repo(Caffe) : https://github.com/CMU-Perceptual-Computing-Lab/openpose
+1. Openpose: https://github.com/CMU-Perceptual-Computing-Lab/openpose
 2. tf-pose: https://github.com/ildoonet/tf-pose-estimation
 
 The classifier, to classify stages in the stroke is currently under construction.
