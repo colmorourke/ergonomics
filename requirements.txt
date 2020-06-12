@@ -1,6 +1,7 @@
 streamlit==0.59
 opencv-python
 opencv-contrib-python
+apt-get install libsm6 libxext6 libxrender-dev
 Cython
 argparse
 dill
