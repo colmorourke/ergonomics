@@ -1,6 +1,6 @@
 streamlit==0.59
-libsm libxrender1 libfontconfig1
 opencv-python
+opencv-contrib-python
 Cython
 argparse
 dill
