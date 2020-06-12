@@ -1,4 +1,5 @@
 streamlit==0.59
+cv2
 Cython
 argparse
 dill
