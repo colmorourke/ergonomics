@@ -31,9 +31,9 @@ st.image(im, use_column_width=True)
 # get dimensions of the image
 width, height = im.size #height,width = im.size # NOTE: im.size returns width, height
 
-st.write("height, width = " + str(height) + " , " + str(width))
+#st.write("height, width = " + str(height) + " , " + str(width))
 
-st.write(filename)
+#st.write(filename)
 
 pose = pose_estimator(filename, True)
 
@@ -50,7 +50,7 @@ st.image(im, use_column_width=True)
 # get dimensions of the image
 height,width = im.size
 
-st.write(filename)
+#st.write(filename)
 
 pose = pose_estimator(filename, False)
 

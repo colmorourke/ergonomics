@@ -123,30 +123,44 @@ def pose_estimator(str_filename, stroke_mode):
 
 
     string_1 = "0: Nose = " + str(find_point_hw(pose, 0, height,width))
-    st.write(string_1)
+    #st.write(string_1)
 
+    finish_lean_flag = finish_lean(in_finish, find_point_hw(pose, 6, height, width)[0], find_point_hw(pose, 0, height, width)[0])
+    finish_high_flag = finish_highpull(in_finish, find_point_hw(pose, 7, height, width)[1], find_point_hw(pose, 5, height,width)[1])
+    catch_lean_flag = catch_lean(in_catch, find_point_hw(pose, 1, height,width)[0], find_point_hw(pose, 17, height, width)[0])
 
-    if finish_lean(in_finish, find_point_hw(pose, 6, height, width)[0], find_point_hw(pose, 0, height, width)[0]):
+    if finish_lean_flag:
         action1 = "Leaning back too far at the finish!"
         draw_str(nmp_image, (5, 100), action1, pink_color, 6)
         st.write(action1)
 
-    if finish_highpull(in_finish, find_point_hw(pose, 7, height, width)[1], find_point_hw(pose, 5, height,width)[1]):
+    if finish_high_flag:
         action2 = "You're pulling your hands in too high!"
         draw_str(nmp_image, (5, 180), action2, pink_color, 6)
         st.write(action2)
 
-    if catch_lean(in_catch, find_point_hw(pose, 1, height,width)[0], find_point_hw(pose, 17, height, width)[0]):
-        action = "You need to lean forward slightly at the catch!"
-        draw_str(nmp_image, (5, 180), action, pink_color, 5)
+    if catch_lean_flag:
+        action3 = "You need to lean forward slightly at the catch!"
+        draw_str(nmp_image, (5, 180), action3, pink_color, 5)
+        st.write(action3)
+
+    if not (finish_high_flag or finish_high_flag or catch_lean_flag):
+        action4 = "Great Job!"
+        draw_str(nmp_image, (5, 180), action4, pink_color, 5)
+        st.write(action4)
+
+
 
 
     fig = plt.figure()
     plt.axis('off')
     plt.imshow(cv2.cvtColor(nmp_image, cv2.COLOR_BGR2RGB))
-    plt.subplots_adjust(left=0, right=0.1, top=0.9, bottom=0.1)
+    plt.subplots_adjust(left=0, right=0.1, top=0.2, bottom=0.1)
     fig.tight_layout()
     st.pyplot()
+
+
+
     #st.pyplot(use_column_width=True)
 
 
