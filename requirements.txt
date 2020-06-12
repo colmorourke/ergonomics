@@ -15,6 +15,6 @@ scipy==1.4.1
 slidingwindow==0.0.13
 tqdm
 terminado==0.8.3
-tf-pose==0.1.1
-tf-slim==1.2.0
+tf-pose
+tf-slim
 git+https://github.com/ppwwyyxx/tensorpack.git
