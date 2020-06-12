@@ -1,7 +1,6 @@
 streamlit==0.59
 opencv-python
 opencv-contrib-python
-libsm6
 Cython
 argparse
 dill
