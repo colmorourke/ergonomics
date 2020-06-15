@@ -16,6 +16,7 @@ requests
 scikit-image==0.17.2
 scipy==1.4.1
 slidingwindow==0.0.13
+setuptools==41.0.0
 tqdm
 terminado==0.8.3
 git+https://github.com/ppwwyyxx/tensorpack.git
