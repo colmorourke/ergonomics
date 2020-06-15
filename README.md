@@ -1,6 +1,6 @@
 # Ergonomics
 A virtual coach for rowing machine users  
-random text 2
+random text 3
 
 The goal of this project is to create a virtual coach for users of the rowing machine.
 To achieve this, we first classify stages of the rowing stroke and then identify points of improvement. 
