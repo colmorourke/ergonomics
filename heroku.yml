@@ -1,6 +1,5 @@
 build:
   docker:
-    release:
-       dockerfile: Dockerfile
-       target: builder
     web: Dockerfile
+run:
+  web: sh setup.sh && streamlit run app.py
