@@ -122,42 +122,78 @@ def pose_estimator(str_filename, stroke_mode):
     #height,width = nmp_image.shape[0], nmp_image.shape[1]
 
 
-    string_1 = "0: Nose = " + str(find_point_hw(pose, 0, height,width))
-    #st.write(string_1)
+    string_0 = "0: Nose = " + str(find_point_hw(pose, 0, height,width))
+    string_1 = "1: Neck = " + str(find_point_hw(pose, 1, height,width))
+    string_5 = "5: Shoulder = " + str(find_point_hw(pose, 5, height,width))
+    string_6 = "6: Elbow = " + str(find_point_hw(pose, 6, height,width))
+    string_7 = "7: Wrist = " + str(find_point_hw(pose, 7, height,width))
+    string_15 = "15: Eye = " + str(find_point_hw(pose, 15, height,width))
+    string_17= "17: Ear = " + str(find_point_hw(pose, 17, height,width))
+
+    # st.write("Height, Width = ", height, width)
+    # st.write(string_0)
+    # st.write(string_1)
+    # st.write(string_5)
+    # st.write(string_6)
+    # st.write(string_7)
+    # st.write(string_15)
+    # st.write(string_17)
+
+
+    # str_0 = str(int(find_point_hw(pose, 0, height,width)[0]/width *100)) +", "+ str(int(find_point_hw(pose, 0, height,width)[1]/height *100))
+    # str_1 = str(int(find_point_hw(pose, 1, height,width)[0]/width *100)) +", "+ str(int(find_point_hw(pose, 1, height,width)[1]/height *100))
+    # str_5 = str(int(find_point_hw(pose, 5, height,width)[0]/width *100))+", "+ str(int(find_point_hw(pose, 5, height,width)[1]/height *100))
+    # str_6 = str(int(find_point_hw(pose, 6, height,width)[0]/width *100)) +", "+ str(int(find_point_hw(pose, 6, height,width)[1]/height *100))
+    # str_7 = str(int(find_point_hw(pose, 7, height,width)[0]/width *100)) +", "+ str(int(find_point_hw(pose, 7, height,width)[1]/height *100))
+    # str_15 = str(int(find_point_hw(pose, 15, height,width)[0]/width *100)) +", "+ str(int(find_point_hw(pose, 15, height,width)[1]/height *100))
+    # str_17 = str(int(find_point_hw(pose, 17, height,width)[0]/width *100)) +", "+ str(int(find_point_hw(pose, 17, height,width)[1]/height *100))
+  
+    #st.write(str(width) + ", " + str(height) + ", " + str_0 + ", " + str_1 + ", " + str_5 + ", " + str_6 + ", " + str_7 + ", " + str_15 + ", " + str_17)
+
+    # str_0 = str(find_point_hw(pose, 0, height,width)[0]) +", "+ str(find_point_hw(pose, 0, height,width)[1])
+    # str_1 = str(find_point_hw(pose, 1, height,width)[0]) +", "+ str(find_point_hw(pose, 1, height,width)[1])
+    # str_5 = str(find_point_hw(pose, 5, height,width)[0]) +", "+ str(find_point_hw(pose, 5, height,width)[1])
+    # str_6 = str(find_point_hw(pose, 6, height,width)[0]) +", "+ str(find_point_hw(pose, 6, height,width)[1])
+    # str_7 = str(find_point_hw(pose, 7, height,width)[0]) +", "+ str(find_point_hw(pose, 7, height,width)[1])
+    # str_15 = str(find_point_hw(pose, 15, height,width)[0]) +", "+ str(find_point_hw(pose, 15, height,width)[1])
+    # str_17 = str(find_point_hw(pose, 17, height,width)[0]) +", "+ str(find_point_hw(pose, 17, height,width)[1])
+  
+    # st.write(str_0 + ", " + str_1 + ", " + str_5 + ", " + str_6 + ", " + str_7 + ", " + str_15 + ", " + str_17)
 
     finish_lean_flag = finish_lean(in_finish, find_point_hw(pose, 6, height, width)[0], find_point_hw(pose, 0, height, width)[0])
     finish_high_flag = finish_highpull(in_finish, find_point_hw(pose, 7, height, width)[1], find_point_hw(pose, 5, height,width)[1])
     catch_lean_flag = catch_lean(in_catch, find_point_hw(pose, 1, height,width)[0], find_point_hw(pose, 17, height, width)[0])
 
-    if finish_lean_flag:
-        action1 = "Leaning back too far at the finish!"
-        draw_str(nmp_image, (5, 100), action1, pink_color, 6)
-        st.write(action1)
-
-    if finish_high_flag:
-        action2 = "You're pulling your hands in too high!"
-        draw_str(nmp_image, (5, 180), action2, pink_color, 6)
-        st.write(action2)
-
-    if catch_lean_flag:
-        action3 = "You need to lean forward slightly at the catch!"
-        draw_str(nmp_image, (5, 180), action3, pink_color, 5)
-        st.write(action3)
-
-    if not (finish_high_flag or finish_high_flag or catch_lean_flag):
-        action4 = "Great Job!"
-        draw_str(nmp_image, (5, 180), action4, pink_color, 5)
-        st.write(action4)
-
-
-
-
     fig = plt.figure()
     plt.axis('off')
+    plt.margins(0,0)
     plt.imshow(cv2.cvtColor(nmp_image, cv2.COLOR_BGR2RGB))
     plt.subplots_adjust(left=0, right=0.1, top=0.2, bottom=0.1)
     fig.tight_layout()
     st.pyplot()
+
+    st.header("Feedback from ERGonomics:")
+    
+
+    if finish_lean_flag:
+        action1 = "Leaning back too far at the finish!"
+        #draw_str(nmp_image, (5, 100), action1, pink_color, 6)
+        st.write(action1)
+
+    if finish_high_flag:
+        action2 = "You're pulling your hands in too high!"
+        #draw_str(nmp_image, (5, 180), action2, pink_color, 6)
+        st.write(action2)
+
+    if catch_lean_flag:
+        action3 = "You need to lean forward slightly at the catch!"
+        #draw_str(nmp_image, (5, 180), action3, pink_color, 5)
+        st.write(action3)
+
+    if not (finish_lean_flag or finish_high_flag or catch_lean_flag):
+        action4 = "Great Job!"
+        #draw_str(nmp_image, (5, 180), action4, pink_color, 5)
+        st.write(action4)
 
 
 
